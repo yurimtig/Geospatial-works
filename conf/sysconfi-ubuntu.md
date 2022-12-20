@@ -191,3 +191,11 @@ sudo apt install code
 verify installation:
 code --version
 ```
+## Filezilla SFTP 
+```
+# To find ip ubuntu VM:
+ip a
+
+# Open ssh
+sudo apt install openssh-server
+```
