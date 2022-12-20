@@ -1,12 +1,12 @@
-## Install Dependencies in Ubuntu 20.04
+# Install Dependencies in Ubuntu 20.04
 
-### Install Python, Pip and Virtualenv
 
-sudo apt update
+## Install Python, Pip and Virtualenv
+
+``` > sudo apt update
 sudo apt install software-properties-common
 sudo apt install python3 python3-pip - y
 sudo apt install python3-dev python3-virtualenv python3-venv virtualenvwrapper -y
-
 sudo -H pip3 install --upgrade pip
 
 echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" | sudo tee --append ~/.bashrc
@@ -14,12 +14,13 @@ echo "export WORKON_HOME=~/.virtualenvs" | sudo tee --append ~/.bashrc
 echo "export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv" | sudo tee --append ~/.bashrc
 echo "source /usr/share/virtualenvwrapper/virtualenvwrapper.sh" | sudo tee --append ~/.bashrc
 
-source ~/.bashrc
+source ~/.bashrc 
+```
 
 
-### Install GDAL and GRASS GIS
+## Install GDAL and GRASS GIS
 
-be sure to have an updated system
+```be sure to have an updated system
 sudo apt-get update && sudo apt-get upgrade -y
 
 install PROJ
@@ -42,7 +43,7 @@ Install dependencies:
 sudo apt-get install build-essential flex make bison gcc libgcc1 g++ ccache python3 python3-dev python3-opengl python3-wxgtk4.0 python3-dateutil libgsl-dev python3-numpy wx3.0-headers wx-common libwxgtk3.0-gtk3-dev libwxbase3.0-dev libncurses5-dev libbz2-dev zlib1g-dev gettext libtiff5-dev libpnglite-dev libcairo2 libcairo2-dev sqlite3 libsqlite3-dev  libpq-dev libreadline6-dev libfreetype6-dev libfftw3-3 libfftw3-dev libboost-thread-dev libboost-program-options-dev  libpdal-dev subversion libzstd-dev checkinstall libglu1-mesa-dev libxmu-dev ghostscript wget -y
 
 
-### Download GRASS GIS:
+Download GRASS GIS:
 
 
 cd ~/ && wget https://github.com/OSGeo/grass/archive/refs/tags/7.8.7.tar.gz
@@ -86,15 +87,15 @@ make -j4
 sudo make install
 
 sudo apt install grass
+```
+## Set GDALDATA environment variable:
 
-### Set GDALDATA environment variable:
-
-echo "export GDAL_DATA=/usr/share/gdal" | sudo tee --append ~/.bashrc
+``` echo "export GDAL_DATA=/usr/share/gdal" | sudo tee --append ~/.bashrc
 echo "export PROJ_LIB=/usr/share/proj" | sudo tee --append ~/.bashrc
 source ~/.bashrc
-
-### Install PostgreSQL and PostGIS
-
+```
+## Install PostgreSQL and PostGIS
+```
 Create the file repository configuration:
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
@@ -103,14 +104,14 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 
 Update the package lists:
 sudo apt-get update
-
-### Install the latest version of PostgreSQL.
-
+```
+## Install the latest version of PostgreSQL.
+```
 If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
 sudo apt install postgresql-client-12 postgresql-common postgresql-12 postgresql-12-postgis-3 netcat postgresql-12-ogr-fdw postgresql-12-postgis-3-scripts postgresql-plpython3-12 postgresql-12-pgrouting postgresql-server-dev-12 postgresql-12-cron -y
-
-#### PostGIS basic configuration:
-
+```
+## PostGIS basic configuration:
+```
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'admin';"
 sudo -u postgres psql -c "CREATE USER inescc WITH SUPERUSER PASSWORD 'admin';"
 sudo -u postgres psql -c "CREATE USER replicator WITH REPLICATION PASSWORD 'admin';"
@@ -124,13 +125,13 @@ sudo -u postgres psql -d postgis_template -c "CREATE EXTENSION postgis;"
 sudo -u postgres psql -d postgis_template -c "CREATE EXTENSION postgis_raster;"
 sudo -u postgres psql -d postgis_template -c "CREATE EXTENSION postgis_topology;"
 sudo -u postgres psql -d postgis_template -c "CREATE EXTENSION pgrouting;"
-
-### Install OSMIUM and OSMOSIS
-
+```
+## Install OSMIUM and OSMOSIS
+```
 sudo apt install osmium-tool osmosis -y
-
-### Install SAGA GIS (optional):
-
+```
+## Install SAGA GIS (optional):
+```
 sudo apt install libwxgtk3.0-gtk3-dev libtiff5-dev libexpat-dev wx-common unixodbc-dev
 
 sudo apt install g++ cmake cmake-qt-gui make libtool git
@@ -139,7 +140,7 @@ Downloading SAGA sources
 cd ~
 git clone git://git.code.sf.net/p/saga-gis/code saga-gis-code
 
-### Compile SAGA
+# Compile SAGA
 cd saga-gis-code
 mkdir build
 cd build && cmake ../saga-gis -DCMAKE_BUILD_TYPE=RELEASE -DWITH_TRIANGLE=OFF -DWITH_SYSTEM_SVM=ON -DWITH_DEV_TOOLS=OFF
@@ -149,30 +150,30 @@ autoreconf -fi
 ./configure
 make
 sudo make install
-
-### Install R:
-
+```
+## Install R:
+```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 
 sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
 
 sudo apt update
 sudo apt install r-base
-
-### Install NodeJS and NPM:
-
+```
+## Install NodeJS and NPM:
+```
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
 
 source ~/.profile
 
 nvm install 16.14.0
-
-### Install Angular globaly:
-
+```
+## Install Angular globaly:
+```
 > npm install -g @angular/cli@12.0.3
-
-### install VScode
-
+```
+## Install VScode
+```
 sudo apt update
 
 package dependence:
@@ -189,3 +190,4 @@ sudo apt install code
 
 verify installation:
 code --version
+```
