@@ -23,20 +23,23 @@ source ~/.bashrc
 ```be sure to have an updated system
 sudo apt-get update && sudo apt-get upgrade -y
 
-install PROJ
+install PROJ:
 sudo apt-get install libproj-dev proj-data proj-bin unzip -y
 
-install GEOS
+install GEOS:
 sudo apt-get install libgeos-dev -y
 
-install GDAL
+install GDAL_
 sudo apt-get install libgdal-dev python3-gdal gdal-bin -y
 
-install PDAL (optional)
+install PDAL (optional):
 sudo apt-get install libpdal-dev pdal -y
 
 recommended to give Python3 precedence over Python2 (which is end-of-life since 2019)
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+install GDAL in a Python environment:
+pip install gdal==3.3.0
 
 Install dependencies:
 
